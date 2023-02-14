@@ -62,7 +62,7 @@ describe("Test APIs", () => {
     console.log(response.body[0]._id);
     const resp = await client
       .get(`/products/${response.body[0]._id}`)
-      .expect(200);
+      .expect(204);
     console.log(resp.body);
     const notfoundResponse = await client
       .get("/products/63eb8c08aab87eec75e626c0")
@@ -107,7 +107,7 @@ describe("Test APIs", () => {
     const updatedResponse = await client
       .delete(`/products/${productId}`)
       .send(newProduct)
-      .expect(200);
+      .expect(204);
     const notfoundResponse = await client
       .delete("/products/63eb8c08aab87eec75e626c0")
       .send(newProduct)

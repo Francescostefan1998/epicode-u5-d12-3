@@ -27,7 +27,7 @@ productsRouter.get("/:productId", async (req, res, next) => {
   try {
     const product = await ProductsModel.findById(req.params.productId);
     if (product) {
-      res.status(200).send(product);
+      res.status(204).send(product);
     } else {
       res.status(404).send(404);
     }
@@ -57,7 +57,7 @@ productsRouter.delete("/:productId", async (req, res, next) => {
   try {
     const product = await ProductsModel.findByIdAndDelete(req.params.productId);
     if (product) {
-      res.status(200).send("Product deleted");
+      res.status(204).send("Product deleted");
     } else {
       res.status(404).send(404);
     }
