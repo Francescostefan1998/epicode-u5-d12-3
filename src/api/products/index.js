@@ -26,10 +26,25 @@ productsRouter.post("/", async (req, res, next) => {
 productsRouter.get("/:productId", async (req, res, next) => {
   try {
     const product = await ProductsModel.findById(req.params.productId);
+    res.status(200).send(product);
+  } catch (error) {
+    next(error);
+  }
+});
 
-    if (product) {
-      res.status(200).send(product);
-    }
+productsRouter.put("/:productId", async (req, res, next) => {
+  try {
+    const product = await ProductsModel.findByIdAndUpdate(req.params.productId);
+    res.status(200).send(product);
+  } catch (error) {
+    next(error);
+  }
+});
+
+productsRouter.delete("/:productId", async (req, res, next) => {
+  try {
+    const product = await ProductsModel.findByIdAndDelete(req.params.productId);
+    res.status(200).send("Product deleted");
   } catch (error) {
     next(error);
   }
